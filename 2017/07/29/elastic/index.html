@@ -75,7 +75,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Testing,Another Tag," />
+  <meta name="keywords" content="tags," />
 
 
 
@@ -91,21 +91,21 @@
 
 
 
-<meta name="description" content="ʲô��Elasticsearch����Elasticsearch��һЩ˵�� Node���ڵ㣩��������װ��Elasticsearch�������ṩ����ת�ƺ���չ�ķ����� Cluster����Ⱥ����һ����Ⱥ������һ��������node��֯��һ�𣬹�ͬ��������ͬ�����������ݾ��и��ؾ��⹦�ܵļ�Ⱥ Document��">
-<meta name="keywords" content="Testing,Another Tag">
+<meta name="description" content="什么是Elasticsearch关于Elasticsearch的一些说明 Node（节点）：单个的装有Elasticsearch服务并提供故障转移和扩展的服务器 Cluster（集群）：一个集群就是由一个或多个node组织在一起，共同工作，共同分享整个数据具有负载均衡功能的集群 Document（文档）：一个文档是一个可被索引的基础信息单元 Index（索引）：索引就是一个拥有几分相似特征的文档集">
+<meta name="keywords" content="tags">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch">
 <meta property="og:url" content="http://yoursite.com/2017/07/29/elastic/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="ʲô��Elasticsearch����Elasticsearch��һЩ˵�� Node���ڵ㣩��������װ��Elasticsearch�������ṩ����ת�ƺ���չ�ķ����� Cluster����Ⱥ����һ����Ⱥ������һ��������node��֯��һ�𣬹�ͬ��������ͬ�����������ݾ��и��ؾ��⹦�ܵļ�Ⱥ Document��">
+<meta property="og:description" content="什么是Elasticsearch关于Elasticsearch的一些说明 Node（节点）：单个的装有Elasticsearch服务并提供故障转移和扩展的服务器 Cluster（集群）：一个集群就是由一个或多个node组织在一起，共同工作，共同分享整个数据具有负载均衡功能的集群 Document（文档）：一个文档是一个可被索引的基础信息单元 Index（索引）：索引就是一个拥有几分相似特征的文档集">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1472129463&di=6cb8d5b6d510439cd0cfb32654655c6e&src=http://images.cnitblog.com/blog2015/603001/201503/031612296601250.png">
 <meta property="og:image" content="c:/Users/Administrator/Pictures/fields.png">
 <meta property="og:image" content="c:/Users/Administrator/Pictures/field_fun.png">
-<meta property="og:updated_time" content="2017-07-29T02:34:47.226Z">
+<meta property="og:updated_time" content="2017-07-30T00:41:48.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch">
-<meta name="twitter:description" content="ʲô��Elasticsearch����Elasticsearch��һЩ˵�� Node���ڵ㣩��������װ��Elasticsearch�������ṩ����ת�ƺ���չ�ķ����� Cluster����Ⱥ����һ����Ⱥ������һ��������node��֯��һ�𣬹�ͬ��������ͬ�����������ݾ��и��ؾ��⹦�ܵļ�Ⱥ Document��">
+<meta name="twitter:description" content="什么是Elasticsearch关于Elasticsearch的一些说明 Node（节点）：单个的装有Elasticsearch服务并提供故障转移和扩展的服务器 Cluster（集群）：一个集群就是由一个或多个node组织在一起，共同工作，共同分享整个数据具有负载均衡功能的集群 Document（文档）：一个文档是一个可被索引的基础信息单元 Index（索引）：索引就是一个拥有几分相似特征的文档集">
 <meta name="twitter:image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1472129463&di=6cb8d5b6d510439cd0cfb32654655c6e&src=http://images.cnitblog.com/blog2015/603001/201503/031612296601250.png">
 
 
@@ -211,26 +211,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -241,12 +221,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -308,7 +308,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T10:34:05+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T10:40:50+08:00">
                 2017-07-29
               </time>
             
@@ -376,137 +376,138 @@
       
 
       
-        <h3 id="ʲo��Elasticsearch"><a href="#ʲo��Elasticsearch" class="headerlink" title="ʲô��Elasticsearch"></a>ʲô��Elasticsearch</h3><h4 id="����Elasticsearch��һЩ˵��"><a href="#����Elasticsearch��һЩ˵��" class="headerlink" title="����Elasticsearch��һЩ˵��"></a>����Elasticsearch��һЩ˵��</h4><ul>
-<li>Node���ڵ㣩��������װ��Elasticsearch�������ṩ����ת�ƺ���չ�ķ�����</li>
-<li>Cluster����Ⱥ����һ����Ⱥ������һ��������node��֯��һ�𣬹�ͬ��������ͬ�����������ݾ��и��ؾ��⹦�ܵļ�Ⱥ</li>
-<li>Document���ĵ�����һ���ĵ���һ���ɱ������Ļ�����Ϣ��Ԫ</li>
-<li>Index������������������һ��ӵ�м��������������ĵ�����</li>
-<li>Type�����ͣ���һ�������У������Զ���һ�ֻ���������</li>
-<li>Field���У���Field��Elasticsearch����С��λ���൱�����ݵ�ĳһ��</li>
-<li>Shards����Ƭ����Elasticsearch�������ֳ����ɷݣ�ÿ�����־���һ��shard</li>
-<li>Replicas�����ƣ���Replicas������һ�ݻ����ݿ���</li>
+        <h3 id="什么是Elasticsearch"><a href="#什么是Elasticsearch" class="headerlink" title="什么是Elasticsearch"></a>什么是Elasticsearch</h3><h4 id="关于Elasticsearch的一些说明"><a href="#关于Elasticsearch的一些说明" class="headerlink" title="关于Elasticsearch的一些说明"></a>关于Elasticsearch的一些说明</h4><ul>
+<li>Node（节点）：单个的装有Elasticsearch服务并提供故障转移和扩展的服务器</li>
+<li>Cluster（集群）：一个集群就是由一个或多个node组织在一起，共同工作，共同分享整个数据具有负载均衡功能的集群</li>
+<li>Document（文档）：一个文档是一个可被索引的基础信息单元</li>
+<li>Index（索引）：索引就是一个拥有几分相似特征的文档集合</li>
+<li>Type（类型）：一个索引中，你可以定义一种或躲着类型</li>
+<li>Field（列）：Field是Elasticsearch的最小单位，相当于数据的某一列</li>
+<li>Shards（分片）：Elasticsearch将索引分成若干份，每个部分就是一个shard</li>
+<li>Replicas（复制）：Replicas是索引一份或多份拷贝</li>
 </ul>
-<h4 id="��һ���L�ϵ�����ݿ��KԱ�"><a href="#��һ���L�ϵ�����ݿ��KԱ�" class="headerlink" title="��һ���Ĺ�ϵ�����ݿ��ĶԱ�"></a>��һ���Ĺ�ϵ�����ݿ��ĶԱ�</h4><table>
+<h4 id="与一般的关系型数据库的对比"><a href="#与一般的关系型数据库的对比" class="headerlink" title="与一般的关系型数据库的对比"></a>与一般的关系型数据库的对比</h4><table>
 <thead>
 <tr>
-<th>��ϵ�����ݿ⣨����mysql��</th>
-<th>�ǹ�ϵ�����ݿ⣨Elasticsearch��</th>
+<th>关系型数据库（例如mysql）</th>
+<th>非关系型数据库（Elasticsearch）</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>���ݿ�Database</td>
-<td>����Index</td>
+<td>数据库Database</td>
+<td>索引Index</td>
 </tr>
 <tr>
-<td>��Table</td>
-<td>����Type</td>
+<td>表Table</td>
+<td>类型Type</td>
 </tr>
 <tr>
-<td>������Row</td>
-<td>�ĵ�Document</td>
+<td>数据行Row</td>
+<td>文档Document</td>
 </tr>
 <tr>
-<td>������Column</td>
-<td>�ֶ�Field</td>
+<td>数据列Column</td>
+<td>字段Field</td>
 </tr>
 </tbody>
 </table>
-<h4 id="�ܹ�ͼ"><a href="#�ܹ�ͼ" class="headerlink" title="�ܹ�ͼ"></a>�ܹ�ͼ</h4><p><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1472129463&amp;di=6cb8d5b6d510439cd0cfb32654655c6e&amp;src=http://images.cnitblog.com/blog2015/603001/201503/031612296601250.png" alt="�ܹ�ͼ"></p>
-<h3 id="bulk��������"><a href="#bulk��������" class="headerlink" title="bulk��������"></a>bulk��������</h3><table>
+<h4 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h4><p><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1472129463&amp;di=6cb8d5b6d510439cd0cfb32654655c6e&amp;src=http://images.cnitblog.com/blog2015/603001/201503/031612296601250.png" alt="架构图"></p>
+<h3 id="bulk批量操作"><a href="#bulk批量操作" class="headerlink" title="bulk批量操作"></a>bulk批量操作</h3><table>
 <thead>
 <tr>
-<th>action����Ϊ��</th>
-<th>����</th>
+<th>action（行为）</th>
+<th>解释</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>create</td>
-<td>���ĵ�������ʱ����</td>
+<td>当文档不存在时创建</td>
 </tr>
 <tr>
 <td>index</td>
-<td>�������ĵ����滻���е��ĵ�</td>
+<td>创建新文档或替换已有的文档</td>
 </tr>
 <tr>
 <td>update</td>
-<td>�ֲ������ĵ�</td>
+<td>局部更新文档</td>
 </tr>
 <tr>
 <td>delete</td>
-<td>ɾ��һ���ĵ�</td>
+<td>删除一个文档</td>
 </tr>
 </tbody>
 </table>
-<p>����<code>{&quot;delete&quot;:{&quot;_index&quot;:&quot;library&quot;,&quot;_type&quot;:&quot;books&quot;,&quot;_id&quot;:&quot;1&quot;}}</code></p>
-<p>������һЩ��������</p>
+<a id="more"></a>
+<p>例：<code>{&quot;delete&quot;:{&quot;_index&quot;:&quot;library&quot;,&quot;_type&quot;:&quot;books&quot;,&quot;_id&quot;:&quot;1&quot;}}</code></p>
+<p>下面是一些批量操作</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">POST /librarys/books/_bulk</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:1 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;ELASTICSEARCH: THE DEFINETIVE GIDE2&quot;,&quot;price&quot;:5 &#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:2 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;ELASTICSEARCH: cookbook2&quot;,&quot;price&quot;:51 &#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:3 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;THINK IN PHP2&quot;,&quot;price&quot;:5 &#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:4 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;THINK IN PATTERN&quot;,&quot;price&quot;:5 &#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:5 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;HELLO WORLD&quot;,&quot;price&quot;:5 &#125;</div><div class="line"></div><div class="line">GET /librarys/books/_mget</div><div class="line">&#123;</div><div class="line">    &quot;ids&quot; : [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</div><div class="line">&#125;</div><div class="line"></div><div class="line">POST /librarys/books/_bulk</div><div class="line">&#123; &quot;delete&quot;: &#123;&quot;_index&quot;: &quot;librarys&quot;, &quot;_type&quot;: &quot;books&quot;, &quot;_id&quot;: &quot;1&quot;&#125; &#125;</div><div class="line">&#123; &quot;create&quot;: &#123;&quot;_index&quot;: &quot;music&quot;,&quot;_type&quot;:&quot;classical&quot;,&quot;_id&quot;:&quot;1&quot;&#125;&#125;</div><div class="line">&#123; &quot;title&quot;: &quot;love is forvery&quot;&#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_index&quot;: &quot;music&quot;, &quot;_type&quot;: &quot;classical&quot;&#125;&#125;</div><div class="line">&#123; &quot;title&quot;: &quot;live is forvery&quot;&#125;</div><div class="line">&#123; &quot;update&quot;: &#123; &quot;_index&quot;:&quot;librarys&quot;,&quot;_type&quot;:&quot;books&quot;,&quot;_id&quot;:&quot;2&quot;&#125;&#125;</div><div class="line">&#123; &quot;doc&quot;: &#123;&quot;price&quot;:&quot;99999&quot;&#125;&#125;</div></pre></td></tr></table></figure>
-<p><code>PS:�ύ��Body���ݱ���һ��һ��action������һ��Ϊbody���ݣ��м�����Ҫ��\n����</code></p>
-<h4 id="bulk�����j���С������ֵ"><a href="#bulk�����j���С������ֵ" class="headerlink" title="bulk�����ĵ���С������ֵ"></a>bulk�����ĵ���С������ֵ</h4><ul>
-<li>���ݼ�����ÿ���ڵ�����RAM��</li>
-<li>���������ݳ���һ����С����bulk�Ĵ������ܾͻ��½�</li>
-<li>�ĵ����ݴ�С��Ӳ�����ã��ĵ����Ӷȣ��Լ���ǰ��Ⱥ�����й�</li>
+<p><code>PS:提交的Body数据必须一行一个action操作下一行为body数据，中间必须要用\n隔开</code></p>
+<h4 id="bulk处理文档大小的最佳值"><a href="#bulk处理文档大小的最佳值" class="headerlink" title="bulk处理文档大小的最佳值"></a>bulk处理文档大小的最佳值</h4><ul>
+<li>数据加载在每个节点里的RAM里</li>
+<li>请求的数据超过一定大小，那bulk的处理性能就会下降</li>
+<li>文档数据大小跟硬件配置，文档复杂度，以及当前集群负载有关</li>
 </ul>
-<p><code>PS:�տ�ʼ�����ȴ���Сһ�������ݣ����ݲ����鿴���ܣ�����û�������ټӴ�����������</code></p>
-<h3 id="�汾����"><a href="#�汾����" class="headerlink" title="�汾����"></a>�汾����</h3><h4 id="�ֹ����ͱ�����"><a href="#�ֹ����ͱ�����" class="headerlink" title="�ֹ����ͱ�����"></a>�ֹ����ͱ�����</h4><p>���������ٶ��ᷢ��������ͻ������һ�п���Υ�����������ԵĲ���������������ʱ����������������������һЩ��������</p>
-<p>�ֹ������ٶ����ᷢ��������ͻ��ֻ���ύ����ʱ�����Ƿ�Υ�����ݵ������ԣ������ύʱ����Ŀ�걻�޸��ˣ����ύʧ�ܣ�ͬʱ�����������Ĳ�ѯ��������Ϊ��Ҫ�������������ԣ��������ݵ�ʵʱ�Խϲ��ȡ�����ݶ���������������</p>
-<h4 id="�ڲ��汾���ⲿ�汾"><a href="#�ڲ��汾���ⲿ�汾" class="headerlink" title="�ڲ��汾���ⲿ�汾"></a>�ڲ��汾���ⲿ�汾</h4><p>�ڲ��汾���ƣ�ʹ���Դ���<code>_version</code>���͵��������ؼ��֣��޸����ݺ���<code>_version</code>���Զ���1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"># �½�һ�����ݣ�ע���鿴���ص�_version�ؼ��֣��汾Ϊ1</div><div class="line">PUT /librarys/books/1</div><div class="line">&#123;</div><div class="line">    &quot;title&quot;: &quot;Elasticsearch: THE definetive guid&quot;,</div><div class="line">    &quot;name&quot; : &#123;</div><div class="line">        &quot;first&quot;:&quot;longjq&quot;,</div><div class="line">        &quot;last&quot;:&quot;Tong&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;publish_date&quot;:&quot;2015-12-12&quot;,</div><div class="line">    &quot;price&quot;:59.99</div><div class="line">&#125;</div><div class="line"></div><div class="line"># ��ѯid=1�����ݣ��鿴_version�汾�ֶΣ��汾Ϊ1</div><div class="line">GET /librarys/books/1</div><div class="line"></div><div class="line"># �޸�id=1�������е��ֶΣ��鿴_version�汾���汾Ϊ2��˵�����޸ĳɹ�</div><div class="line">POST /librarys/books/1/_update</div><div class="line">&#123;</div><div class="line">    &quot;doc&quot;:&#123;</div><div class="line">        &quot;price&quot;:15</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># ָ���޸�id=1��version=2�����ݣ�����version=3��˵���޸ĳɹ�</div><div class="line">POST /librarys/books/1/_update?version=2</div><div class="line">&#123;</div><div class="line">    &quot;doc&quot;:&#123;</div><div class="line">        &quot;price&quot;:10</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>�ⲿ�汾���ƣ�Ϊ�˱���_version���ⲿ�汾���Ƶ���ֵһ�£�ʹ��version_type=external�ؼ��֣��������ݵ�ǰ��versionֵ�Ƿ�С�������е�versionֵ��ֻ��������versionֵ���������е�versionֵ��ʱ�򣬲����޸ĳɹ�</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># ���ǲ�����ʹ���ⲿ����version_type=external������ָ��id=1��version�İ汾Ϊversion=15�İ汾</div><div class="line">PUT /librarys/books/1?version=15&amp;version_type=external</div><div class="line">&#123;</div><div class="line">    &quot;title&quot;: &quot;Elasticsearch: THE definetive guid&quot;,</div><div class="line">    &quot;name&quot; : &#123;</div><div class="line">        &quot;first&quot;:&quot;longjq&quot;,</div><div class="line">        &quot;last&quot;:&quot;Tong&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;publish_date&quot;:&quot;2015-12-12&quot;,</div><div class="line">    &quot;price&quot;:33.33</div><div class="line">&#125;</div><div class="line"># �ⲿ����version�汾�����Ƶİ汾һ��ʱ������ʧ�ܣ�С��Ҳʧ�ܣ����ﲻ��ʾ�������в������ܶ���֮������versionһ��Ҫ���������е�versionֵ</div><div class="line">PUT /librarys/books/1?version=15&amp;version_type=external</div><div class="line">&#123;</div><div class="line">    &quot;title&quot;: &quot;Elasticsearch: THE definetive guid&quot;,</div><div class="line">    &quot;name&quot; : &#123;</div><div class="line">        &quot;first&quot;:&quot;longjq&quot;,</div><div class="line">        &quot;last&quot;:&quot;Tong&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;publish_date&quot;:&quot;2015-12-12&quot;,</div><div class="line">    &quot;price&quot;:33.33</div><div class="line">&#125;</div><div class="line"></div><div class="line">GET /librarys/books/1</div></pre></td></tr></table></figure>
-<p><code>PS:����versionʱ����ֵ����Ϊ����</code></p>
-<h3 id="Mapping-ӳ��"><a href="#Mapping-ӳ��" class="headerlink" title="Mapping ӳ��"></a>Mapping ӳ��</h3><h4 id="ʲo��Mappingӳ��"><a href="#ʲo��Mappingӳ��" class="headerlink" title="ʲô��Mappingӳ��"></a>ʲô��Mappingӳ��</h4><p>����������mysql�ı��ṹ������������ʱ����Ԥ�ȶ��������ֶε������Լ����ص�����</p>
-<p><code>PS������û������ӳ���Ļ���Elasticsearch���Զ������������ݣ������ֶε�ӳ�䣬������������Ϊ�ֶ�����ӳ����ϵ</code></p>
-<h4 id="����ʲo��"><a href="#����ʲo��" class="headerlink" title="����ʲô��"></a>����ʲô��</h4><p>�����������ĸ���ϸ�º�����</p>
-<h4 id="ӳ���k���"><a href="#ӳ���k���" class="headerlink" title="ӳ���ķ���"></a>ӳ���ķ���</h4><p>��Ϊ<code>��̬ӳ��</code>��<code>��̬ӳ��</code></p>
-<h4 id="�ֶ�����"><a href="#�ֶ�����" class="headerlink" title="�ֶ�����"></a>�ֶ�����</h4><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html" target="_blank" rel="external">ȥ�����鿴</a></p>
-<p><code>PS:��¼��ѧϰ�ʼǵ�ʱ����ʹ�õ���Elasticsearch 2.3�İ汾</code></p>
-<p>���½�ͼΪ�����ֶΣ�2.3�汾�����˺ܶ��ֶΣ�����ȥ�����鿴</p>
-<p><img src="C:\Users\Administrator\Pictures\fields.png" alt="�����ֶ�"></p>
-<h4 id="���Է���"><a href="#���Է���" class="headerlink" title="���Է���"></a>���Է���</h4><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html" target="_blank" rel="external">ȥ�����鿴</a></p>
-<p>���˶����ֶ����ͣ������Ը��ֶ�������������</p>
-<p>���������������Է�����</p>
-<p>�ֶ�������Լ���������������͸�ʽ�����Է����Ǹ���λ�õ��ֶ��������ص����ԣ����Բ�ͬ��������ͬ��Ч����������mysql��default��������������</p>
-<p>��ͼ�ǳ������Է���</p>
-<p><img src="C:\Users\Administrator\Pictures\field_fun.png" alt="�������Է���"></p>
-<h4 id="��̬ӳ��"><a href="#��̬ӳ��" class="headerlink" title="��̬ӳ��"></a>��̬ӳ��</h4><ul>
-<li>ʲô�Ƕ�̬ӳ��</li>
+<p><code>PS:刚开始可以先处理小一点的数据，根据插件查看性能，如果没有问题再加大处理的数据</code></p>
+<h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><h4 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h4><p>悲观锁：假定会发生并发冲突，屏蔽一切可能违反数据完整性的操作，并发量大的时候会产生性能阻塞，产生一些性能问题</p>
+<p>乐观锁：假定不会发生并发冲突，只在提交操作时检查是否违反数据的完整性，如果提交时发现目标被修改了，会提交失败，同时会产生大量的查询操作，因为需要检查数据完整性，所以数据的实时性较差，读取的数据都是脏读、脏数据</p>
+<h4 id="内部版本和外部版本"><a href="#内部版本和外部版本" class="headerlink" title="内部版本和外部版本"></a>内部版本和外部版本</h4><p>内部版本控制：使用自带的<code>_version</code>整型的自增长关键字，修改数据后，<code>_version</code>会自动加1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"># 新建一条数据，注意查看返回的_version关键字，版本为1</div><div class="line">PUT /librarys/books/1</div><div class="line">&#123;</div><div class="line">    &quot;title&quot;: &quot;Elasticsearch: THE definetive guid&quot;,</div><div class="line">    &quot;name&quot; : &#123;</div><div class="line">        &quot;first&quot;:&quot;longjq&quot;,</div><div class="line">        &quot;last&quot;:&quot;Tong&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;publish_date&quot;:&quot;2015-12-12&quot;,</div><div class="line">    &quot;price&quot;:59.99</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 查询id=1的数据，查看_version版本字段，版本为1</div><div class="line">GET /librarys/books/1</div><div class="line"></div><div class="line"># 修改id=1的数据中的字段，查看_version版本，版本为2，说明已修改成功</div><div class="line">POST /librarys/books/1/_update</div><div class="line">&#123;</div><div class="line">    &quot;doc&quot;:&#123;</div><div class="line">        &quot;price&quot;:15</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 指定修改id=1，version=2的数据，返回version=3，说明修改成功</div><div class="line">POST /librarys/books/1/_update?version=2</div><div class="line">&#123;</div><div class="line">    &quot;doc&quot;:&#123;</div><div class="line">        &quot;price&quot;:10</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>外部版本控制：为了保持_version与外部版本控制的数值一致，使用version_type=external关键字，检查数据当前的version值是否小于请求中的version值，只有请求的version值大于数据中的version值的时候，才能修改成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># 覆盖操作，使用外部控制version_type=external参数，指定id=1的version的版本为version=15的版本</div><div class="line">PUT /librarys/books/1?version=15&amp;version_type=external</div><div class="line">&#123;</div><div class="line">    &quot;title&quot;: &quot;Elasticsearch: THE definetive guid&quot;,</div><div class="line">    &quot;name&quot; : &#123;</div><div class="line">        &quot;first&quot;:&quot;longjq&quot;,</div><div class="line">        &quot;last&quot;:&quot;Tong&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;publish_date&quot;:&quot;2015-12-12&quot;,</div><div class="line">    &quot;price&quot;:33.33</div><div class="line">&#125;</div><div class="line"># 外部控制version版本与控制的版本一致时，操作失败，小于也失败，这里不演示，可自行操作，总而言之，给的version一定要大于数据中的version值</div><div class="line">PUT /librarys/books/1?version=15&amp;version_type=external</div><div class="line">&#123;</div><div class="line">    &quot;title&quot;: &quot;Elasticsearch: THE definetive guid&quot;,</div><div class="line">    &quot;name&quot; : &#123;</div><div class="line">        &quot;first&quot;:&quot;longjq&quot;,</div><div class="line">        &quot;last&quot;:&quot;Tong&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;publish_date&quot;:&quot;2015-12-12&quot;,</div><div class="line">    &quot;price&quot;:33.33</div><div class="line">&#125;</div><div class="line"></div><div class="line">GET /librarys/books/1</div></pre></td></tr></table></figure>
+<p><code>PS:给定version时，其值必须为整型</code></p>
+<h3 id="Mapping-映射"><a href="#Mapping-映射" class="headerlink" title="Mapping 映射"></a>Mapping 映射</h3><h4 id="什么是Mapping映射"><a href="#什么是Mapping映射" class="headerlink" title="什么是Mapping映射"></a>什么是Mapping映射</h4><p>就是类似于mysql的表结构，创建索引的时候，预先定义相关字段的类型以及相关的属性</p>
+<p><code>PS：如果没有设置映射的话，Elasticsearch会自动分析数据内容，创建字段的映射，这里可以理解为手动设置映射关系</code></p>
+<h4 id="它有什么用"><a href="#它有什么用" class="headerlink" title="它有什么用"></a>它有什么用</h4><p>让索引建立的更加细致和完善</p>
+<h4 id="映射的分类"><a href="#映射的分类" class="headerlink" title="映射的分类"></a>映射的分类</h4><p>分为<code>静态映射</code>和<code>动态映射</code></p>
+<h4 id="字段类型"><a href="#字段类型" class="headerlink" title="字段类型"></a>字段类型</h4><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html" target="_blank" rel="external">去官网查看</a></p>
+<p><code>PS:记录该学习笔记的时候，使用的是Elasticsearch 2.3的版本</code></p>
+<p>以下截图为常用字段，2.3版本新增了很多字段，建议去官网查看</p>
+<p><img src="C:\Users\Administrator\Pictures\fields.png" alt="常用字段"></p>
+<h4 id="属性方法"><a href="#属性方法" class="headerlink" title="属性方法"></a>属性方法</h4><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html" target="_blank" rel="external">去官网查看</a></p>
+<p>除了定义字段类型，还可以给字段添加相关属性</p>
+<p>如何理解这个属性方法？</p>
+<p>字段类型是约束存入的数据类型格式，属性方法是给该位置的字段添加相关的属性，属性不同会产生不同的效果，类似于mysql的default、主键、自增长</p>
+<p>截图是常用属性方法</p>
+<p><img src="C:\Users\Administrator\Pictures\field_fun.png" alt="常用属性方法"></p>
+<h4 id="动态映射"><a href="#动态映射" class="headerlink" title="动态映射"></a>动态映射</h4><ul>
+<li>什么是动态映射</li>
 </ul>
-<p>�ĵ�������һ����ǰû�������ֶ�ʱ����̬ӳ���Զ��������ֶε����ͣ����Ը��ֶ�����ӳ��</p>
+<p>文档中碰到一个以前没见过的字段时，动态映射自动决定该字段的类型，并对该字段添加映射</p>
 <ul>
-<li>�������ö�̬ӳ��</li>
+<li>如何配置动态映射</li>
 </ul>
-<p>ͨ��dynamic���Խ��п���</p>
-<p>true��Ĭ��ֵ����̬�����Զ���false���������Զ���strict������İ���Զ����׳��쳣��</p>
+<p>通过dynamic属性进行控制</p>
+<p>true：默认值，动态添加自动；false：忽略新自动；strict：碰到陌生自动，抛出异常。</p>
 <ul>
-<li>���÷�Χ</li>
+<li>适用范围</li>
 </ul>
-<p>�����ڸ������ϻ���object���͵������ֶ���</p>
-<h4 id="������ʾ"><a href="#������ʾ" class="headerlink" title="������ʾ"></a>������ʾ</h4><ul>
-<li>�����Ͳ鿴ӳ��</li>
+<p>适用在根对象上或者object类型的任意字段上</p>
+<h4 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h4><ul>
+<li>建立和查看映射</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"># ����ӳ��</div><div class="line">POST /library</div><div class="line">&#123;</div><div class="line">    <span class="attr">"settings"</span>: &#123;</div><div class="line">        <span class="attr">"number_of_shards"</span>:<span class="number">5</span>,</div><div class="line">        <span class="attr">"number_of_replicas"</span>: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"mappings"</span>: &#123;</div><div class="line">        <span class="attr">"books"</span>: &#123;</div><div class="line">            <span class="attr">"properties"</span>: &#123;</div><div class="line">                <span class="attr">"title"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span> &#125;,</div><div class="line">                <span class="attr">"name"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span>, <span class="attr">"index"</span>: <span class="string">"not_analyzed"</span> &#125;,</div><div class="line">                <span class="attr">"publish_date"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"date"</span>, <span class="attr">"index"</span> : <span class="string">"not_analyzed"</span>&#125;,</div><div class="line">                <span class="attr">"price"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"double"</span> &#125;,</div><div class="line">                <span class="attr">"number"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"integer"</span> &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># ��̬ӳ��(ע�⣺2.3�İ汾ò���Ѿ��޸ģ��ô������鿴�����ĵ�)</div><div class="line">PUT /library</div><div class="line">&#123;</div><div class="line">    <span class="attr">"mappings"</span>: &#123;</div><div class="line">        <span class="attr">"books"</span>: &#123;</div><div class="line">            <span class="attr">"dynamic"</span>: <span class="string">"strict"</span>,</div><div class="line">            <span class="attr">"properties"</span>: &#123;</div><div class="line">                <span class="attr">"title"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span> &#125;,</div><div class="line">                <span class="attr">"name"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span>, <span class="attr">"index"</span>: <span class="string">"not_analyzed"</span> &#125;,</div><div class="line">                <span class="attr">"publish_date"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"date"</span>, <span class="attr">"index"</span> : <span class="string">"not_analyzed"</span>&#125;,</div><div class="line">                <span class="attr">"price"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"double"</span> &#125;,</div><div class="line">                <span class="attr">"number"</span>: &#123; </div><div class="line">                    <span class="attr">"type"</span>: <span class="string">"object"</span>,</div><div class="line">                    <span class="attr">"dynamic"</span>: <span class="literal">true</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># �鿴library������Ϣ������ӳ����Ϣ</div><div class="line">GET /library</div><div class="line"></div><div class="line"># ��ȡlibrary����ӳ����Ϣ</div><div class="line">GET /library/_mapping</div><div class="line"></div><div class="line"># ��ȡlibrary�����µ�booksӳ����Ϣ</div><div class="line">GET /library/_mapping/books</div><div class="line"></div><div class="line"># ��ȡ������Ⱥ�ڵ�������Ϣ</div><div class="line">GET /_all/_mapping</div><div class="line"></div><div class="line"># ��ȡ������Ⱥ�ڵ�typeΪbooks��music��ӳ����Ϣ</div><div class="line">GET /_all/_mapping/books,music</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"># 建立映射</div><div class="line">POST /library</div><div class="line">&#123;</div><div class="line">    <span class="attr">"settings"</span>: &#123;</div><div class="line">        <span class="attr">"number_of_shards"</span>:<span class="number">5</span>,</div><div class="line">        <span class="attr">"number_of_replicas"</span>: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"mappings"</span>: &#123;</div><div class="line">        <span class="attr">"books"</span>: &#123;</div><div class="line">            <span class="attr">"properties"</span>: &#123;</div><div class="line">                <span class="attr">"title"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span> &#125;,</div><div class="line">                <span class="attr">"name"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span>, <span class="attr">"index"</span>: <span class="string">"not_analyzed"</span> &#125;,</div><div class="line">                <span class="attr">"publish_date"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"date"</span>, <span class="attr">"index"</span> : <span class="string">"not_analyzed"</span>&#125;,</div><div class="line">                <span class="attr">"price"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"double"</span> &#125;,</div><div class="line">                <span class="attr">"number"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"integer"</span> &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 动态映射(注意：2.3的版本貌似已经修改，该处建议查看官网文档)</div><div class="line">PUT /library</div><div class="line">&#123;</div><div class="line">    <span class="attr">"mappings"</span>: &#123;</div><div class="line">        <span class="attr">"books"</span>: &#123;</div><div class="line">            <span class="attr">"dynamic"</span>: <span class="string">"strict"</span>,</div><div class="line">            <span class="attr">"properties"</span>: &#123;</div><div class="line">                <span class="attr">"title"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span> &#125;,</div><div class="line">                <span class="attr">"name"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span>, <span class="attr">"index"</span>: <span class="string">"not_analyzed"</span> &#125;,</div><div class="line">                <span class="attr">"publish_date"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"date"</span>, <span class="attr">"index"</span> : <span class="string">"not_analyzed"</span>&#125;,</div><div class="line">                <span class="attr">"price"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"double"</span> &#125;,</div><div class="line">                <span class="attr">"number"</span>: &#123; </div><div class="line">                    <span class="attr">"type"</span>: <span class="string">"object"</span>,</div><div class="line">                    <span class="attr">"dynamic"</span>: <span class="literal">true</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 查看library索引信息，包含映射信息</div><div class="line">GET /library</div><div class="line"></div><div class="line"># 获取library索引映射信息</div><div class="line">GET /library/_mapping</div><div class="line"></div><div class="line"># 获取library索引下的books映射信息</div><div class="line">GET /library/_mapping/books</div><div class="line"></div><div class="line"># 获取整个集群内的索引信息</div><div class="line">GET /_all/_mapping</div><div class="line"></div><div class="line"># 获取整个集群内的type为books和music的映射信息</div><div class="line">GET /_all/_mapping/books,music</div></pre></td></tr></table></figure>
 <ul>
-<li>ɾ��ӳ��</li>
+<li>删除映射</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># ɾ��ӳ��</div><div class="line">DELETE /library/books/_mapping</div><div class="line">DELETE /library/_mapping/books</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 删除映射</div><div class="line">DELETE /library/books/_mapping</div><div class="line">DELETE /library/_mapping/books</div></pre></td></tr></table></figure>
 <ul>
-<li>����ӳ��</li>
+<li>更新映射</li>
 </ul>
-<p>���ź���Mappingӳ��һ���������Ͳ����޸ģ�����</p>
-<p>ֻ���½�����һ��������Ȼ����֮ǰ�����ݵ��뵽�µ�������</p>
-<p>————��������—————<br>1.��������������һ�����������Ұ����е�����ָ����������</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PUT /��������/_alias/����A</div></pre></td></tr></table></figure>
-<p>2.�´���һ����������������Ҫ��ӳ��</p>
-<p>3.�ѱ���ָ���µ���������ȡ��֮ǰ��������ָ��</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">POST /_aliases</div><div class="line">&#123;</div><div class="line">	&quot;actions&quot;:[</div><div class="line">  		&#123; &quot;remove&quot;: &#123; &quot;index&quot;: &quot;����������&quot;,&quot;alias&quot;: &quot;����A&quot; &#125; &#125;��</div><div class="line">  		&#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;�½�������&quot;,&quot;alias&quot;: &quot;����A&quot; &#125; &#125;��</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ͨ��������������ʵ������ƽ�����ɣ�������ͣ��ִ��</p>
-<h3 id="��ѯ"><a href="#��ѯ" class="headerlink" title="��ѯ"></a>��ѯ</h3><h4 id="������ѯ"><a href="#������ѯ" class="headerlink" title="������ѯ"></a>������ѯ</h4><p>����Elasticsearch���ò�ѯ�������в�ѯ���ĵ�������ʾ������</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">GET /library/books/</div><div class="line"></div><div class="line"># ָ��index���Լ�type��������</div><div class="line">GET /library/books/_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line"># ָ��index��û��type������������type��������</div><div class="line">GET /library/_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line"># û��index��Ҳû��type������������index��������</div><div class="line">GET /_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line">#------------------------------------------------</div><div class="line"># term��ѯ</div><div class="line"># term��ѯ����ѯĳ�ֶ�����ĳ���ؼ��ֵ��ĵ�</div><div class="line">GET /library/books/_search</div><div class="line">&#123;</div><div class="line">    <span class="attr">"query"</span>: &#123;</div><div class="line">        <span class="attr">"term"</span>: &#123;</div><div class="line">            <span class="attr">"preview"</span>: <span class="string">"ut"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"># terms��ѯ����ѯĳ���ֶ��ж����ؼ��ʵ��ĵ�</div><div class="line"># minimum_match����Сƥ�䣬1 ˵�������ؼ���������Ҫ��һ�� 2 ˵���ĵ��������ؼ��ʱ�������</div><div class="line"># minimum_match �ò�����2.3�İ汾�в�֧����terms��ʹ���ˣ���ȥ������ѯ</div><div class="line">GET /library/books/_search</div><div class="line">&#123;</div><div class="line">    <span class="attr">"query"</span>:&#123;</div><div class="line">        <span class="attr">"terms"</span>: &#123;</div><div class="line">           <span class="attr">"preview"</span>: [</div><div class="line">              <span class="string">"doloremque"</span>,</div><div class="line">              <span class="string">"Odit"</span></div><div class="line">           ],</div><div class="line">          <span class="attr">"minimum_match"</span>: <span class="number">2</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># -----------------------------------------------</div><div class="line"></div><div class="line"></div><div class="line">GET /library/books/_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line"># ���Ʋ�ѯ��������</div><div class="line"># �൱��mysql�е�limit</div><div class="line"># form �����ĸ�������ʼ���أ�2.3�汾�У����ͱ��������˶�������ȥ������ѯ</div><div class="line"># size �����巵�������Ľ�����</div><div class="line">GET /library/books/_search</div><div class="line">&#123;</div><div class="line">    <span class="attr">"from"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">"query"</span>: &#123;</div><div class="line">        <span class="attr">"term"</span>: &#123;</div><div class="line">           <span class="attr">"title"</span>: &#123;</div><div class="line">              <span class="attr">"value"</span>: <span class="string">"ELASTICSEARCH"</span></div><div class="line">           &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="���ϲ�ѯ"><a href="#���ϲ�ѯ" class="headerlink" title="���ϲ�ѯ"></a>���ϲ�ѯ</h4><p>�Ѷ���������ѯ������һ���ĸ����Բ�ѯ</p>
-<h4 id="����"><a href="#����" class="headerlink" title="����"></a>����</h4><p>��ѯͬʱ��ͨ��filter�����ڲ�Ӱ�����ֵ�������ɸѡ����Ҫ������</p>
-<p>library����</p>
+<p>很遗憾，Mapping映射一旦建立，就不能修改！！！</p>
+<p>只能新建另外一个索引，然后将之前的数据导入到新的索引中</p>
+<p>————操作方法—————<br>1.给现有索引定义一个别名，并且把现有的索引指向这个别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PUT /现有索引/_alias/别名A</div></pre></td></tr></table></figure>
+<p>2.新创建一个索引，定义好需要的映射</p>
+<p>3.把别名指向新的索引，并取消之前的索引的指向</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">POST /_aliases</div><div class="line">&#123;</div><div class="line">	&quot;actions&quot;:[</div><div class="line">  		&#123; &quot;remove&quot;: &#123; &quot;index&quot;: &quot;现有索引名&quot;,&quot;alias&quot;: &quot;别名A&quot; &#125; &#125;，</div><div class="line">  		&#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;新建索引名&quot;,&quot;alias&quot;: &quot;别名A&quot; &#125; &#125;，</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过以上三步骤可实现索引平衡过渡，且是零停机执行</p>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><h4 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h4><p>利用Elasticsearch内置查询条件进行查询，文档最后有示例数据</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">GET /library/books/</div><div class="line"></div><div class="line"># 指定index名以及type名的搜索</div><div class="line">GET /library/books/_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line"># 指定index名没有type名的搜索，跨type类型搜索</div><div class="line">GET /library/_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line"># 没有index名也没有type名的搜索，跨index索引搜索</div><div class="line">GET /_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line">#------------------------------------------------</div><div class="line"># term查询</div><div class="line"># term查询：查询某字段里有某个关键字的文档</div><div class="line">GET /library/books/_search</div><div class="line">&#123;</div><div class="line">    <span class="attr">"query"</span>: &#123;</div><div class="line">        <span class="attr">"term"</span>: &#123;</div><div class="line">            <span class="attr">"preview"</span>: <span class="string">"ut"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"># terms查询：查询某个字段有多个关键词的文档</div><div class="line"># minimum_match：最小匹配，1 说明两个关键词里最少要有一个 2 说明文档这两个关键词必须存在</div><div class="line"># minimum_match 该参数在2.3的版本中不支持在terms中使用了，请去官网查询</div><div class="line">GET /library/books/_search</div><div class="line">&#123;</div><div class="line">    <span class="attr">"query"</span>:&#123;</div><div class="line">        <span class="attr">"terms"</span>: &#123;</div><div class="line">           <span class="attr">"preview"</span>: [</div><div class="line">              <span class="string">"doloremque"</span>,</div><div class="line">              <span class="string">"Odit"</span></div><div class="line">           ],</div><div class="line">          <span class="attr">"minimum_match"</span>: <span class="number">2</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># -----------------------------------------------</div><div class="line"></div><div class="line"></div><div class="line">GET /library/books/_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line"># 控制查询返回数量</div><div class="line"># 相当于mysql中的limit</div><div class="line"># form ：从哪个结果开始返回，2.3版本中，整型变量变成了对象，请去官网查询</div><div class="line"># size ：定义返回最大的结果数</div><div class="line">GET /library/books/_search</div><div class="line">&#123;</div><div class="line">    <span class="attr">"from"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">"query"</span>: &#123;</div><div class="line">        <span class="attr">"term"</span>: &#123;</div><div class="line">           <span class="attr">"title"</span>: &#123;</div><div class="line">              <span class="attr">"value"</span>: <span class="string">"ELASTICSEARCH"</span></div><div class="line">           &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h4><p>把多个基本查询组合在一起的复合性查询</p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>查询同时，通过filter条件在不影响打分的情况下筛选出想要的数据</p>
+<p>library数据</p>
 <p><span id="library"></span></p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"minima"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">49.45</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Earum inventore velit quidem incidunt alias rem esse pariatur. Laborum sed quo nulla consectetur voluptatem consequatur delectus. Culpa quo tempora atque explicabo sed officia eos consequatur."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2011-02-13"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"eveniet"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">46.59</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Aliquam necessitatibus nostrum pariatur ut hic. Voluptatum rerum occaecati natus nostrum dolor. Quibusdam omnis quod voluptas nostrum."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"1986-10-27"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"voluptatem"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">29.99</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Voluptatem a recusandae inventore error. Ut et beatae nulla enim saepe et. Pariatur fuga quam ut. Ducimus qui ut est ut dolor."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2012-07-12"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"tempore"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">74.42</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Eveniet facilis dolor repellat nesciunt eum quas. Ipsa ab harum et et. Autem fuga voluptas modi omnis ad et. Inventore in autem cum atque molestiae odit perferendis."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"1981-11-26"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"voluptatem"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">99.97</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Dolores quis expedita libero id neque. Non est culpa perspiciatis repudiandae deserunt quaerat eius. Quo laboriosam officiis voluptate voluptas quia corporis ut."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"1987-01-05"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"dolores"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">35.27</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Porro atque necessitatibus sed doloremque qui. Enim dolores illum dolorum qui incidunt."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2006-03-19"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"pariatur"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">22.87</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Quis facere blanditiis voluptatem at non aperiam ab ut. Voluptatum ipsum necessitatibus et et. Voluptatem culpa quia architecto. Deleniti aut officia temporibus est."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"1982-09-09"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"et"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">37.13</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Odit doloremque magni accusamus cupiditate soluta nam assumenda qui. Labore nulla voluptatem reiciendis. Excepturi ex sapiente dolor aut totam provident. Velit et ut adipisci quaerat nihil qui."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2015-09-25"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"maxime"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">8.78</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Quaerat eos repudiandae inventore. Voluptates qui est illum ad sed. Necessitatibus ab pariatur quod."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2011-10-31"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"aspernatur"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">40.39</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Aut quibusdam tempora rerum. Doloremque tempore laborum dolores mollitia fugiat. Nemo blanditiis exercitationem occaecati modi repudiandae."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2008-01-06"</span></div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
 <p></p>
@@ -539,9 +540,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Testing/" rel="tag"># Testing</a>
-          
-            <a href="/tags/Another-Tag/" rel="tag"># Another Tag</a>
+            <a href="/tags/tags/" rel="tag"># tags</a>
           
         </div>
       
@@ -563,6 +562,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/29/elastic-conf/" rel="prev" title="Elasticsearch配置文件">
+                Elasticsearch配置文件 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -635,7 +638,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -645,10 +648,10 @@
             
             
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">1</span>
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -656,10 +659,10 @@
             
             
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">2</span>
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
@@ -692,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ʲo��Elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">ʲô��Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#����Elasticsearch��һЩ˵��"><span class="nav-number">1.1.</span> <span class="nav-text">����Elasticsearch��һЩ˵��</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#��һ���L�ϵ�����ݿ��KԱ�"><span class="nav-number">1.2.</span> <span class="nav-text">��һ���Ĺ�ϵ�����ݿ��ĶԱ�</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#�ܹ�ͼ"><span class="nav-number">1.3.</span> <span class="nav-text">�ܹ�ͼ</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bulk��������"><span class="nav-number">2.</span> <span class="nav-text">bulk��������</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bulk�����j���С������ֵ"><span class="nav-number">2.1.</span> <span class="nav-text">bulk�����ĵ���С������ֵ</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#�汾����"><span class="nav-number">3.</span> <span class="nav-text">�汾����</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#�ֹ����ͱ�����"><span class="nav-number">3.1.</span> <span class="nav-text">�ֹ����ͱ�����</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#�ڲ��汾���ⲿ�汾"><span class="nav-number">3.2.</span> <span class="nav-text">�ڲ��汾���ⲿ�汾</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapping-ӳ��"><span class="nav-number">4.</span> <span class="nav-text">Mapping ӳ��</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ʲo��Mappingӳ��"><span class="nav-number">4.1.</span> <span class="nav-text">ʲô��Mappingӳ��</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#����ʲo��"><span class="nav-number">4.2.</span> <span class="nav-text">����ʲô��</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ӳ���k���"><span class="nav-number">4.3.</span> <span class="nav-text">ӳ���ķ���</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#�ֶ�����"><span class="nav-number">4.4.</span> <span class="nav-text">�ֶ�����</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#���Է���"><span class="nav-number">4.5.</span> <span class="nav-text">���Է���</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#��̬ӳ��"><span class="nav-number">4.6.</span> <span class="nav-text">��̬ӳ��</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#������ʾ"><span class="nav-number">4.7.</span> <span class="nav-text">������ʾ</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#��ѯ"><span class="nav-number">5.</span> <span class="nav-text">��ѯ</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#������ѯ"><span class="nav-number">5.1.</span> <span class="nav-text">������ѯ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#���ϲ�ѯ"><span class="nav-number">5.2.</span> <span class="nav-text">���ϲ�ѯ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#����"><span class="nav-number">5.3.</span> <span class="nav-text">����</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">什么是Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于Elasticsearch的一些说明"><span class="nav-number">1.1.</span> <span class="nav-text">关于Elasticsearch的一些说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与一般的关系型数据库的对比"><span class="nav-number">1.2.</span> <span class="nav-text">与一般的关系型数据库的对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#架构图"><span class="nav-number">1.3.</span> <span class="nav-text">架构图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bulk批量操作"><span class="nav-number">2.</span> <span class="nav-text">bulk批量操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bulk处理文档大小的最佳值"><span class="nav-number">2.1.</span> <span class="nav-text">bulk处理文档大小的最佳值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本控制"><span class="nav-number">3.</span> <span class="nav-text">版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#乐观锁和悲观锁"><span class="nav-number">3.1.</span> <span class="nav-text">乐观锁和悲观锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部版本和外部版本"><span class="nav-number">3.2.</span> <span class="nav-text">内部版本和外部版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapping-映射"><span class="nav-number">4.</span> <span class="nav-text">Mapping 映射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是Mapping映射"><span class="nav-number">4.1.</span> <span class="nav-text">什么是Mapping映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#它有什么用"><span class="nav-number">4.2.</span> <span class="nav-text">它有什么用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#映射的分类"><span class="nav-number">4.3.</span> <span class="nav-text">映射的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字段类型"><span class="nav-number">4.4.</span> <span class="nav-text">字段类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性方法"><span class="nav-number">4.5.</span> <span class="nav-text">属性方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态映射"><span class="nav-number">4.6.</span> <span class="nav-text">动态映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码演示"><span class="nav-number">4.7.</span> <span class="nav-text">代码演示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询"><span class="nav-number">5.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本查询"><span class="nav-number">5.1.</span> <span class="nav-text">基本查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组合查询"><span class="nav-number">5.2.</span> <span class="nav-text">组合查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤"><span class="nav-number">5.3.</span> <span class="nav-text">过滤</span></a></li></ol></li></ol></div>
             
 
           </div>
