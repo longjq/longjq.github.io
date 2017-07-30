@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Elastic," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是Elasticsearch关于Elasticsearch的一些说明 Node（节点）：单个的装有Elasticsearch服务并提供故障转移和扩展的服务器 Cluster（集群）：一个集群就是由一个或多个node组织在一起，共同工作，共同分享整个数据具有负载均衡功能的集群 Document（文档）：一个文档是一个可被索引的基础信息单元 Index（索引）：索引就是一个拥有几分相似特征的文档集">
+<meta name="keywords" content="Elastic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch">
+<meta property="og:url" content="http://yoursite.com/2017/07/29/elastic/index.html">
+<meta property="og:site_name" content="走走停停">
+<meta property="og:description" content="什么是Elasticsearch关于Elasticsearch的一些说明 Node（节点）：单个的装有Elasticsearch服务并提供故障转移和扩展的服务器 Cluster（集群）：一个集群就是由一个或多个node组织在一起，共同工作，共同分享整个数据具有负载均衡功能的集群 Document（文档）：一个文档是一个可被索引的基础信息单元 Index（索引）：索引就是一个拥有几分相似特征的文档集">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1472129463&di=6cb8d5b6d510439cd0cfb32654655c6e&src=http://images.cnitblog.com/blog2015/603001/201503/031612296601250.png">
+<meta property="og:image" content="c:/Users/Administrator/Pictures/fields.png">
+<meta property="og:image" content="c:/Users/Administrator/Pictures/field_fun.png">
+<meta property="og:updated_time" content="2017-07-30T01:43:05.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elasticsearch">
+<meta name="twitter:description" content="什么是Elasticsearch关于Elasticsearch的一些说明 Node（节点）：单个的装有Elasticsearch服务并提供故障转移和扩展的服务器 Cluster（集群）：一个集群就是由一个或多个node组织在一起，共同工作，共同分享整个数据具有负载均衡功能的集群 Document（文档）：一个文档是一个可被索引的基础信息单元 Index（索引）：索引就是一个拥有几分相似特征的文档集">
+<meta name="twitter:image" content="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1472129463&di=6cb8d5b6d510439cd0cfb32654655c6e&src=http://images.cnitblog.com/blog2015/603001/201503/031612296601250.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/29/elastic/"/>
+
+
+
+
+
+  <title>Elasticsearch | 走走停停</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?02f2b7b2837adc0ef05eb6ec5d35715b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">走走停停</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">开发技术记录</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/29/elastic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Focus15T">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/q.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="走走停停">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Elasticsearch</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T10:40:50+08:00">
+                2017-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Elastic/" itemprop="url" rel="index">
+                    <span itemprop="name">Elastic</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/07/29/elastic/" class="leancloud_visitors" data-flag-title="Elasticsearch">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是Elasticsearch"><a href="#什么是Elasticsearch" class="headerlink" title="什么是Elasticsearch"></a>什么是Elasticsearch</h3><h4 id="关于Elasticsearch的一些说明"><a href="#关于Elasticsearch的一些说明" class="headerlink" title="关于Elasticsearch的一些说明"></a>关于Elasticsearch的一些说明</h4><ul>
+<li>Node（节点）：单个的装有Elasticsearch服务并提供故障转移和扩展的服务器</li>
+<li>Cluster（集群）：一个集群就是由一个或多个node组织在一起，共同工作，共同分享整个数据具有负载均衡功能的集群</li>
+<li>Document（文档）：一个文档是一个可被索引的基础信息单元</li>
+<li>Index（索引）：索引就是一个拥有几分相似特征的文档集合</li>
+<li>Type（类型）：一个索引中，你可以定义一种或躲着类型</li>
+<li>Field（列）：Field是Elasticsearch的最小单位，相当于数据的某一列</li>
+<li>Shards（分片）：Elasticsearch将索引分成若干份，每个部分就是一个shard</li>
+<li>Replicas（复制）：Replicas是索引一份或多份拷贝</li>
+</ul>
+<h4 id="与一般的关系型数据库的对比"><a href="#与一般的关系型数据库的对比" class="headerlink" title="与一般的关系型数据库的对比"></a>与一般的关系型数据库的对比</h4><table>
+<thead>
+<tr>
+<th>关系型数据库（例如mysql）</th>
+<th>非关系型数据库（Elasticsearch）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库Database</td>
+<td>索引Index</td>
+</tr>
+<tr>
+<td>表Table</td>
+<td>类型Type</td>
+</tr>
+<tr>
+<td>数据行Row</td>
+<td>文档Document</td>
+</tr>
+<tr>
+<td>数据列Column</td>
+<td>字段Field</td>
+</tr>
+</tbody>
+</table>
+<h4 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h4><p><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1472129463&amp;di=6cb8d5b6d510439cd0cfb32654655c6e&amp;src=http://images.cnitblog.com/blog2015/603001/201503/031612296601250.png" alt="架构图"></p>
+<h3 id="bulk批量操作"><a href="#bulk批量操作" class="headerlink" title="bulk批量操作"></a>bulk批量操作</h3><table>
+<thead>
+<tr>
+<th>action（行为）</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>create</td>
+<td>当文档不存在时创建</td>
+</tr>
+<tr>
+<td>index</td>
+<td>创建新文档或替换已有的文档</td>
+</tr>
+<tr>
+<td>update</td>
+<td>局部更新文档</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>删除一个文档</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<p>例：<code>{&quot;delete&quot;:{&quot;_index&quot;:&quot;library&quot;,&quot;_type&quot;:&quot;books&quot;,&quot;_id&quot;:&quot;1&quot;}}</code></p>
+<p>下面是一些批量操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">POST /librarys/books/_bulk</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:1 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;ELASTICSEARCH: THE DEFINETIVE GIDE2&quot;,&quot;price&quot;:5 &#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:2 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;ELASTICSEARCH: cookbook2&quot;,&quot;price&quot;:51 &#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:3 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;THINK IN PHP2&quot;,&quot;price&quot;:5 &#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:4 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;THINK IN PATTERN&quot;,&quot;price&quot;:5 &#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_id&quot;:5 &#125; &#125;</div><div class="line">&#123; &quot;title&quot;:&quot;HELLO WORLD&quot;,&quot;price&quot;:5 &#125;</div><div class="line"></div><div class="line">GET /librarys/books/_mget</div><div class="line">&#123;</div><div class="line">    &quot;ids&quot; : [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</div><div class="line">&#125;</div><div class="line"></div><div class="line">POST /librarys/books/_bulk</div><div class="line">&#123; &quot;delete&quot;: &#123;&quot;_index&quot;: &quot;librarys&quot;, &quot;_type&quot;: &quot;books&quot;, &quot;_id&quot;: &quot;1&quot;&#125; &#125;</div><div class="line">&#123; &quot;create&quot;: &#123;&quot;_index&quot;: &quot;music&quot;,&quot;_type&quot;:&quot;classical&quot;,&quot;_id&quot;:&quot;1&quot;&#125;&#125;</div><div class="line">&#123; &quot;title&quot;: &quot;love is forvery&quot;&#125;</div><div class="line">&#123; &quot;index&quot;: &#123; &quot;_index&quot;: &quot;music&quot;, &quot;_type&quot;: &quot;classical&quot;&#125;&#125;</div><div class="line">&#123; &quot;title&quot;: &quot;live is forvery&quot;&#125;</div><div class="line">&#123; &quot;update&quot;: &#123; &quot;_index&quot;:&quot;librarys&quot;,&quot;_type&quot;:&quot;books&quot;,&quot;_id&quot;:&quot;2&quot;&#125;&#125;</div><div class="line">&#123; &quot;doc&quot;: &#123;&quot;price&quot;:&quot;99999&quot;&#125;&#125;</div></pre></td></tr></table></figure>
+<p><code>PS:提交的Body数据必须一行一个action操作下一行为body数据，中间必须要用\n隔开</code></p>
+<h4 id="bulk处理文档大小的最佳值"><a href="#bulk处理文档大小的最佳值" class="headerlink" title="bulk处理文档大小的最佳值"></a>bulk处理文档大小的最佳值</h4><ul>
+<li>数据加载在每个节点里的RAM里</li>
+<li>请求的数据超过一定大小，那bulk的处理性能就会下降</li>
+<li>文档数据大小跟硬件配置，文档复杂度，以及当前集群负载有关</li>
+</ul>
+<p><code>PS:刚开始可以先处理小一点的数据，根据插件查看性能，如果没有问题再加大处理的数据</code></p>
+<h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><h4 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h4><p>悲观锁：假定会发生并发冲突，屏蔽一切可能违反数据完整性的操作，并发量大的时候会产生性能阻塞，产生一些性能问题</p>
+<p>乐观锁：假定不会发生并发冲突，只在提交操作时检查是否违反数据的完整性，如果提交时发现目标被修改了，会提交失败，同时会产生大量的查询操作，因为需要检查数据完整性，所以数据的实时性较差，读取的数据都是脏读、脏数据</p>
+<h4 id="内部版本和外部版本"><a href="#内部版本和外部版本" class="headerlink" title="内部版本和外部版本"></a>内部版本和外部版本</h4><p>内部版本控制：使用自带的<code>_version</code>整型的自增长关键字，修改数据后，<code>_version</code>会自动加1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"># 新建一条数据，注意查看返回的_version关键字，版本为1</div><div class="line">PUT /librarys/books/1</div><div class="line">&#123;</div><div class="line">    &quot;title&quot;: &quot;Elasticsearch: THE definetive guid&quot;,</div><div class="line">    &quot;name&quot; : &#123;</div><div class="line">        &quot;first&quot;:&quot;longjq&quot;,</div><div class="line">        &quot;last&quot;:&quot;Tong&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;publish_date&quot;:&quot;2015-12-12&quot;,</div><div class="line">    &quot;price&quot;:59.99</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 查询id=1的数据，查看_version版本字段，版本为1</div><div class="line">GET /librarys/books/1</div><div class="line"></div><div class="line"># 修改id=1的数据中的字段，查看_version版本，版本为2，说明已修改成功</div><div class="line">POST /librarys/books/1/_update</div><div class="line">&#123;</div><div class="line">    &quot;doc&quot;:&#123;</div><div class="line">        &quot;price&quot;:15</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 指定修改id=1，version=2的数据，返回version=3，说明修改成功</div><div class="line">POST /librarys/books/1/_update?version=2</div><div class="line">&#123;</div><div class="line">    &quot;doc&quot;:&#123;</div><div class="line">        &quot;price&quot;:10</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>外部版本控制：为了保持_version与外部版本控制的数值一致，使用version_type=external关键字，检查数据当前的version值是否小于请求中的version值，只有请求的version值大于数据中的version值的时候，才能修改成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># 覆盖操作，使用外部控制version_type=external参数，指定id=1的version的版本为version=15的版本</div><div class="line">PUT /librarys/books/1?version=15&amp;version_type=external</div><div class="line">&#123;</div><div class="line">    &quot;title&quot;: &quot;Elasticsearch: THE definetive guid&quot;,</div><div class="line">    &quot;name&quot; : &#123;</div><div class="line">        &quot;first&quot;:&quot;longjq&quot;,</div><div class="line">        &quot;last&quot;:&quot;Tong&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;publish_date&quot;:&quot;2015-12-12&quot;,</div><div class="line">    &quot;price&quot;:33.33</div><div class="line">&#125;</div><div class="line"># 外部控制version版本与控制的版本一致时，操作失败，小于也失败，这里不演示，可自行操作，总而言之，给的version一定要大于数据中的version值</div><div class="line">PUT /librarys/books/1?version=15&amp;version_type=external</div><div class="line">&#123;</div><div class="line">    &quot;title&quot;: &quot;Elasticsearch: THE definetive guid&quot;,</div><div class="line">    &quot;name&quot; : &#123;</div><div class="line">        &quot;first&quot;:&quot;longjq&quot;,</div><div class="line">        &quot;last&quot;:&quot;Tong&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;publish_date&quot;:&quot;2015-12-12&quot;,</div><div class="line">    &quot;price&quot;:33.33</div><div class="line">&#125;</div><div class="line"></div><div class="line">GET /librarys/books/1</div></pre></td></tr></table></figure>
+<p><code>PS:给定version时，其值必须为整型</code></p>
+<h3 id="Mapping-映射"><a href="#Mapping-映射" class="headerlink" title="Mapping 映射"></a>Mapping 映射</h3><h4 id="什么是Mapping映射"><a href="#什么是Mapping映射" class="headerlink" title="什么是Mapping映射"></a>什么是Mapping映射</h4><p>就是类似于mysql的表结构，创建索引的时候，预先定义相关字段的类型以及相关的属性</p>
+<p><code>PS：如果没有设置映射的话，Elasticsearch会自动分析数据内容，创建字段的映射，这里可以理解为手动设置映射关系</code></p>
+<h4 id="它有什么用"><a href="#它有什么用" class="headerlink" title="它有什么用"></a>它有什么用</h4><p>让索引建立的更加细致和完善</p>
+<h4 id="映射的分类"><a href="#映射的分类" class="headerlink" title="映射的分类"></a>映射的分类</h4><p>分为<code>静态映射</code>和<code>动态映射</code></p>
+<h4 id="字段类型"><a href="#字段类型" class="headerlink" title="字段类型"></a>字段类型</h4><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html" target="_blank" rel="external">去官网查看</a></p>
+<p><code>PS:记录该学习笔记的时候，使用的是Elasticsearch 2.3的版本</code></p>
+<p>以下截图为常用字段，2.3版本新增了很多字段，建议去官网查看</p>
+<p><img src="C:\Users\Administrator\Pictures\fields.png" alt="常用字段"></p>
+<h4 id="属性方法"><a href="#属性方法" class="headerlink" title="属性方法"></a>属性方法</h4><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html" target="_blank" rel="external">去官网查看</a></p>
+<p>除了定义字段类型，还可以给字段添加相关属性</p>
+<p>如何理解这个属性方法？</p>
+<p>字段类型是约束存入的数据类型格式，属性方法是给该位置的字段添加相关的属性，属性不同会产生不同的效果，类似于mysql的default、主键、自增长</p>
+<p>截图是常用属性方法</p>
+<p><img src="C:\Users\Administrator\Pictures\field_fun.png" alt="常用属性方法"></p>
+<h4 id="动态映射"><a href="#动态映射" class="headerlink" title="动态映射"></a>动态映射</h4><ul>
+<li>什么是动态映射</li>
+</ul>
+<p>文档中碰到一个以前没见过的字段时，动态映射自动决定该字段的类型，并对该字段添加映射</p>
+<ul>
+<li>如何配置动态映射</li>
+</ul>
+<p>通过dynamic属性进行控制</p>
+<p>true：默认值，动态添加自动；false：忽略新自动；strict：碰到陌生自动，抛出异常。</p>
+<ul>
+<li>适用范围</li>
+</ul>
+<p>适用在根对象上或者object类型的任意字段上</p>
+<h4 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h4><ul>
+<li>建立和查看映射</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"># 建立映射</div><div class="line">POST /library</div><div class="line">&#123;</div><div class="line">    <span class="attr">"settings"</span>: &#123;</div><div class="line">        <span class="attr">"number_of_shards"</span>:<span class="number">5</span>,</div><div class="line">        <span class="attr">"number_of_replicas"</span>: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"mappings"</span>: &#123;</div><div class="line">        <span class="attr">"books"</span>: &#123;</div><div class="line">            <span class="attr">"properties"</span>: &#123;</div><div class="line">                <span class="attr">"title"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span> &#125;,</div><div class="line">                <span class="attr">"name"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span>, <span class="attr">"index"</span>: <span class="string">"not_analyzed"</span> &#125;,</div><div class="line">                <span class="attr">"publish_date"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"date"</span>, <span class="attr">"index"</span> : <span class="string">"not_analyzed"</span>&#125;,</div><div class="line">                <span class="attr">"price"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"double"</span> &#125;,</div><div class="line">                <span class="attr">"number"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"integer"</span> &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 动态映射(注意：2.3的版本貌似已经修改，该处建议查看官网文档)</div><div class="line">PUT /library</div><div class="line">&#123;</div><div class="line">    <span class="attr">"mappings"</span>: &#123;</div><div class="line">        <span class="attr">"books"</span>: &#123;</div><div class="line">            <span class="attr">"dynamic"</span>: <span class="string">"strict"</span>,</div><div class="line">            <span class="attr">"properties"</span>: &#123;</div><div class="line">                <span class="attr">"title"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span> &#125;,</div><div class="line">                <span class="attr">"name"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"string"</span>, <span class="attr">"index"</span>: <span class="string">"not_analyzed"</span> &#125;,</div><div class="line">                <span class="attr">"publish_date"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"date"</span>, <span class="attr">"index"</span> : <span class="string">"not_analyzed"</span>&#125;,</div><div class="line">                <span class="attr">"price"</span>: &#123; <span class="attr">"type"</span>: <span class="string">"double"</span> &#125;,</div><div class="line">                <span class="attr">"number"</span>: &#123; </div><div class="line">                    <span class="attr">"type"</span>: <span class="string">"object"</span>,</div><div class="line">                    <span class="attr">"dynamic"</span>: <span class="literal">true</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 查看library索引信息，包含映射信息</div><div class="line">GET /library</div><div class="line"></div><div class="line"># 获取library索引映射信息</div><div class="line">GET /library/_mapping</div><div class="line"></div><div class="line"># 获取library索引下的books映射信息</div><div class="line">GET /library/_mapping/books</div><div class="line"></div><div class="line"># 获取整个集群内的索引信息</div><div class="line">GET /_all/_mapping</div><div class="line"></div><div class="line"># 获取整个集群内的type为books和music的映射信息</div><div class="line">GET /_all/_mapping/books,music</div></pre></td></tr></table></figure>
+<ul>
+<li>删除映射</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 删除映射</div><div class="line">DELETE /library/books/_mapping</div><div class="line">DELETE /library/_mapping/books</div></pre></td></tr></table></figure>
+<ul>
+<li>更新映射</li>
+</ul>
+<p>很遗憾，Mapping映射一旦建立，就不能修改！！！</p>
+<p>只能新建另外一个索引，然后将之前的数据导入到新的索引中</p>
+<p>————操作方法—————<br>1.给现有索引定义一个别名，并且把现有的索引指向这个别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PUT /现有索引/_alias/别名A</div></pre></td></tr></table></figure>
+<p>2.新创建一个索引，定义好需要的映射</p>
+<p>3.把别名指向新的索引，并取消之前的索引的指向</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">POST /_aliases</div><div class="line">&#123;</div><div class="line">	&quot;actions&quot;:[</div><div class="line">  		&#123; &quot;remove&quot;: &#123; &quot;index&quot;: &quot;现有索引名&quot;,&quot;alias&quot;: &quot;别名A&quot; &#125; &#125;，</div><div class="line">  		&#123; &quot;add&quot;: &#123; &quot;index&quot;: &quot;新建索引名&quot;,&quot;alias&quot;: &quot;别名A&quot; &#125; &#125;，</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过以上三步骤可实现索引平衡过渡，且是零停机执行</p>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><h4 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h4><p>利用Elasticsearch内置查询条件进行查询，文档最后有示例数据</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">GET /library/books/</div><div class="line"></div><div class="line"># 指定index名以及type名的搜索</div><div class="line">GET /library/books/_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line"># 指定index名没有type名的搜索，跨type类型搜索</div><div class="line">GET /library/_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line"># 没有index名也没有type名的搜索，跨index索引搜索</div><div class="line">GET /_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line">#------------------------------------------------</div><div class="line"># term查询</div><div class="line"># term查询：查询某字段里有某个关键字的文档</div><div class="line">GET /library/books/_search</div><div class="line">&#123;</div><div class="line">    <span class="attr">"query"</span>: &#123;</div><div class="line">        <span class="attr">"term"</span>: &#123;</div><div class="line">            <span class="attr">"preview"</span>: <span class="string">"ut"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"># terms查询：查询某个字段有多个关键词的文档</div><div class="line"># minimum_match：最小匹配，1 说明两个关键词里最少要有一个 2 说明文档这两个关键词必须存在</div><div class="line"># minimum_match 该参数在2.3的版本中不支持在terms中使用了，请去官网查询</div><div class="line">GET /library/books/_search</div><div class="line">&#123;</div><div class="line">    <span class="attr">"query"</span>:&#123;</div><div class="line">        <span class="attr">"terms"</span>: &#123;</div><div class="line">           <span class="attr">"preview"</span>: [</div><div class="line">              <span class="string">"doloremque"</span>,</div><div class="line">              <span class="string">"Odit"</span></div><div class="line">           ],</div><div class="line">          <span class="attr">"minimum_match"</span>: <span class="number">2</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># -----------------------------------------------</div><div class="line"></div><div class="line"></div><div class="line">GET /library/books/_search?q=title:ELASTICSEARCH</div><div class="line"></div><div class="line"># 控制查询返回数量</div><div class="line"># 相当于mysql中的limit</div><div class="line"># form ：从哪个结果开始返回，2.3版本中，整型变量变成了对象，请去官网查询</div><div class="line"># size ：定义返回最大的结果数</div><div class="line">GET /library/books/_search</div><div class="line">&#123;</div><div class="line">    <span class="attr">"from"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">"query"</span>: &#123;</div><div class="line">        <span class="attr">"term"</span>: &#123;</div><div class="line">           <span class="attr">"title"</span>: &#123;</div><div class="line">              <span class="attr">"value"</span>: <span class="string">"ELASTICSEARCH"</span></div><div class="line">           &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h4><p>把多个基本查询组合在一起的复合性查询</p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>查询同时，通过filter条件在不影响打分的情况下筛选出想要的数据</p>
+<p>library数据</p>
+<p><span id="library"></span></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"minima"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">49.45</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Earum inventore velit quidem incidunt alias rem esse pariatur. Laborum sed quo nulla consectetur voluptatem consequatur delectus. Culpa quo tempora atque explicabo sed officia eos consequatur."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2011-02-13"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"eveniet"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">46.59</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Aliquam necessitatibus nostrum pariatur ut hic. Voluptatum rerum occaecati natus nostrum dolor. Quibusdam omnis quod voluptas nostrum."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"1986-10-27"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"voluptatem"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">29.99</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Voluptatem a recusandae inventore error. Ut et beatae nulla enim saepe et. Pariatur fuga quam ut. Ducimus qui ut est ut dolor."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2012-07-12"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"tempore"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">74.42</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Eveniet facilis dolor repellat nesciunt eum quas. Ipsa ab harum et et. Autem fuga voluptas modi omnis ad et. Inventore in autem cum atque molestiae odit perferendis."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"1981-11-26"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"voluptatem"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">99.97</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Dolores quis expedita libero id neque. Non est culpa perspiciatis repudiandae deserunt quaerat eius. Quo laboriosam officiis voluptate voluptas quia corporis ut."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"1987-01-05"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"dolores"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">35.27</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Porro atque necessitatibus sed doloremque qui. Enim dolores illum dolorum qui incidunt."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2006-03-19"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"pariatur"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">22.87</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Quis facere blanditiis voluptatem at non aperiam ab ut. Voluptatum ipsum necessitatibus et et. Voluptatem culpa quia architecto. Deleniti aut officia temporibus est."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"1982-09-09"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"et"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">37.13</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Odit doloremque magni accusamus cupiditate soluta nam assumenda qui. Labore nulla voluptatem reiciendis. Excepturi ex sapiente dolor aut totam provident. Velit et ut adipisci quaerat nihil qui."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2015-09-25"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"maxime"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">8.78</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Quaerat eos repudiandae inventore. Voluptates qui est illum ad sed. Necessitatibus ab pariatur quod."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2011-10-31"</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"aspernatur"</span>,</div><div class="line">        <span class="attr">"price"</span>: <span class="number">40.39</span>,</div><div class="line">        <span class="attr">"preview"</span>: <span class="string">"Aut quibusdam tempora rerum. Doloremque tempore laborum dolores mollitia fugiat. Nemo blanditiis exercitationem occaecati modi repudiandae."</span>,</div><div class="line">        <span class="attr">"publish_date"</span>: <span class="string">"2008-01-06"</span></div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<p></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.JPG" alt="Focus15T WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.JPG" alt="Focus15T Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Elastic/" rel="tag"># Elastic</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/29/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/29/elastic-conf/" rel="prev" title="Elasticsearch配置文件">
+                Elasticsearch配置文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/q.png"
+               alt="Focus15T" />
+          <p class="site-author-name" itemprop="name">Focus15T</p>
+           
+              <p class="site-description motion-element" itemprop="description">每个人都会经过这个阶段，见到一座山，就想知道山后面是什么。我很想告诉他，可能翻过山后面，你会发现没什么特别。回望之下，可能会觉得这一边更好。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/longjq" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">什么是Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于Elasticsearch的一些说明"><span class="nav-number">1.1.</span> <span class="nav-text">关于Elasticsearch的一些说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与一般的关系型数据库的对比"><span class="nav-number">1.2.</span> <span class="nav-text">与一般的关系型数据库的对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#架构图"><span class="nav-number">1.3.</span> <span class="nav-text">架构图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bulk批量操作"><span class="nav-number">2.</span> <span class="nav-text">bulk批量操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bulk处理文档大小的最佳值"><span class="nav-number">2.1.</span> <span class="nav-text">bulk处理文档大小的最佳值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本控制"><span class="nav-number">3.</span> <span class="nav-text">版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#乐观锁和悲观锁"><span class="nav-number">3.1.</span> <span class="nav-text">乐观锁和悲观锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部版本和外部版本"><span class="nav-number">3.2.</span> <span class="nav-text">内部版本和外部版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapping-映射"><span class="nav-number">4.</span> <span class="nav-text">Mapping 映射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是Mapping映射"><span class="nav-number">4.1.</span> <span class="nav-text">什么是Mapping映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#它有什么用"><span class="nav-number">4.2.</span> <span class="nav-text">它有什么用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#映射的分类"><span class="nav-number">4.3.</span> <span class="nav-text">映射的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字段类型"><span class="nav-number">4.4.</span> <span class="nav-text">字段类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性方法"><span class="nav-number">4.5.</span> <span class="nav-text">属性方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态映射"><span class="nav-number">4.6.</span> <span class="nav-text">动态映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码演示"><span class="nav-number">4.7.</span> <span class="nav-text">代码演示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询"><span class="nav-number">5.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本查询"><span class="nav-number">5.1.</span> <span class="nav-text">基本查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组合查询"><span class="nav-number">5.2.</span> <span class="nav-text">组合查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤"><span class="nav-number">5.3.</span> <span class="nav-text">过滤</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Focus15T</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2140248"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("BTJUorSquzFW57Ho7YaiDVEJ-gzGzoHsz", "rVXfsh2tda6hI7iby82ImVwF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
