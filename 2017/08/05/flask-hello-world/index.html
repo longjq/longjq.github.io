@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="flask入门环境：CentOS 6.5 Python 2.7.13 Flask 0.12.2 一、准备工作使用virtualenv构建一个虚拟目录，然后使用PIP安装Flask 模块 1234$ virtualenv venv2$ cd venv2$ source bin/activate(venv2) $ pip install Flask==0.12.2 二、Flask的Hello Worl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-05T05:58:33.888Z">
+<meta property="og:updated_time" content="2017-08-05T06:01:11.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flask系列-1-hello world">
 <meta name="twitter:description" content="flask入门环境：CentOS 6.5 Python 2.7.13 Flask 0.12.2 一、准备工作使用virtualenv构建一个虚拟目录，然后使用PIP安装Flask 模块 1234$ virtualenv venv2$ cd venv2$ source bin/activate(venv2) $ pip install Flask==0.12.2 二、Flask的Hello Worl">
@@ -348,7 +348,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T13:58:33+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T14:01:11+08:00">
                 2017-08-05
               </time>
             
@@ -429,7 +429,7 @@
 <p>在该文件夹下新建一个index.py文件，输入如下代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from flask import Flask</div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line">@app.route(&apos;/&apos;)</div><div class="line">def hello_world():</div><div class="line">    return &apos;Hello World!&apos;</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    app.run()</div></pre></td></tr></table></figure>
 <p>执行如下命令启动，此时就可以通过<code>127.0.0.1:5000</code>网址访问网站</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(venv2) $ python flaskweb.py </div><div class="line"> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(venv2) $ python index.py </div><div class="line"> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</div></pre></td></tr></table></figure>
 <h4 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h4><p>使用virtualenv构建了flask的项目，并创建了一个返回hello world字符串的网页</p>
 
       
@@ -504,6 +504,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/08/05/flask-jinja2/" rel="prev" title="flask系列-3-模板">
+                flask系列-3-模板 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -577,7 +581,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -599,7 +603,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
